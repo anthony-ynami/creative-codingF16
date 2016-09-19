@@ -20,7 +20,7 @@ function draw() {
   if(mouseIsPressed) {
     strokeWeight(1);
     stroke(random(255), random(255), random(255), 100+shadetotal);
-    if(notfirstline) line(0, 0, mouseX, mouseY);
+    if(notfirstline) line(width/2, height/2, mouseX, mouseY);
     strokeWeight(5);
     if(notfirstline) line(pmouseX, pmouseY, mouseX, mouseY);
       
