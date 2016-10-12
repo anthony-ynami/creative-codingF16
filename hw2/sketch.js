@@ -21,7 +21,7 @@ var side = 600
 function setup() {
   createCanvas(side, side);
   background(0);
-  textFont(thefont);
+  textFont(thefont, 20);
   console.log("ready");
 }
 
@@ -43,7 +43,7 @@ function mouseReleased(){
     console.log("there are "+words_in.length+" words");
     textAlign(CENTER);
     for (var i = 0; i<words_in.length;i++){
-      text(words_in[i], width/2, height/8+(i+1)*15);
+      text(words_in[i], width/2, height/8+(i+1)*25);
     }
     huh.speak(say_what);
     count+=1;
