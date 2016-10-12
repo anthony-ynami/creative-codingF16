@@ -39,8 +39,12 @@ function mouseReleased(){
     huh.setPitch(thepitch);
     huh.setRate(therate);
     var say_what = halquotes[count];
+    words_in = say_what.split(" ");
+    console.log("there are "+words_in.length+" words");
     textAlign(CENTER);
-    text(say_what, width/2, height/2);
+    for (var i = 0; i<words_in.length;i++){
+      text(words_in[i], width/2, height/8+(i+1)*10);
+    }
     huh.speak(say_what);
     count+=1;
   }
