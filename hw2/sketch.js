@@ -23,10 +23,11 @@ function setup() {
   background(0);
   textFont(thefont, 20);
   console.log("ready");
+  fill(255);
+  text("CLICK",width/2,height/2);
 }
 
 function draw() {
-  fill(255)
 }
 
 function mouseReleased(){
