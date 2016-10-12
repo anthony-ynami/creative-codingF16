@@ -13,7 +13,7 @@ function preload()
 {
   pic = loadImage("hal.png");
   halquotes = loadStrings('hal_cooked.txt');
-  thefont = loadFont('lefont.otf');
+  thefont = loadFont('lefont.ttf');
 }
 
 var side = 600
@@ -43,7 +43,7 @@ function mouseReleased(){
     console.log("there are "+words_in.length+" words");
     textAlign(CENTER);
     for (var i = 0; i<words_in.length;i++){
-      text(words_in[i], width/2, height/8+(i+1)*10);
+      text(words_in[i], width/2, height/8+(i+1)*15);
     }
     huh.speak(say_what);
     count+=1;
