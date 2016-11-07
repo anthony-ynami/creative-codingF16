@@ -27,6 +27,9 @@ var currentangle = 270; // we start out facing north
 var step;
 var angle = 45; // how many degrees do we turn with '+' and '-'
 
+var string = 'FF=B=F--F-F=B=F-BF=F-FF';
+var pos = 0;
+
 function preload(){
   turt = loadImage("assets/rilanneko.png");
   // lin = loadImage("assets/gao.png");
@@ -35,8 +38,9 @@ function preload(){
 function setup()
 {
   createCanvas(800, 600);
-  background(255);
-  stroke(0, 0, 0, 255);
+  background(28,107,160);
+  strokeWeight(20);
+  stroke(random(255), random(255), random(255), random(255));
   
   // start our turtle in the middle of the screen
   x = width/2;
@@ -47,8 +51,7 @@ function setup()
 
 function draw()
 {
-  
-  // give me some random color values:
+  //give me some random color values:
   var r = random(128, 255);
   var g = random(0, 192);
   var b = random(0, 50);
@@ -61,18 +64,17 @@ function draw()
   radius+= random(0, 15);
   radius = radius/3;
   
+}
+
+function doit(k)
+{
   // draw the stuff:
-  fill(r, g, b, a); // interior fill color
   imageMode(CENTER);
   image(turt,x, y, 50, 50); // circle that chases the mouse
 
-}
-
-function keyTyped()
-{
-  console.log(key); // what key did we type?
+  console.log(k); // what key did we type?
   
-  if(key=='F') // draw forward
+  if(k=='F') // draw forward
   {
     // polar to cartesian transformation based on step and currentangle:
     var x1 = x + step*cos(radians(currentangle));
@@ -85,30 +87,49 @@ function keyTyped()
     x = x1;
     y = y1;
   }
-  else if(key=='f') // move forward
+  else if(k=='f') // move forward
   {
     x1 = x + step*cos(radians(currentangle));
     y1 = y + step*sin(radians(currentangle));
     x = x1;
     y = y1;
   }
-  else if(key=='=')
+  else if(k=='=')
   {
    currentangle+=angle; // turn left
   }
-  else if(key=='-')
+  else if(k=='-')
   {
-   currentangle-=angle; // turn right   
+    currentangle-=angle; // turn right   
   }
-  else if(key == keyCode(LEFT_ARROW))
+  else if(k == "B")
   {
-    currentangle -= 90;
-  }
-  else if(key == keyCode(RIGHT_ARROW))
-  {
-    currentangle = 90;
+    var px = x - step*cos(radians(currentangle));
+    var py = y - step*sin(radians(currentangle));
+    
+    line(x, y, px, py);
+    
+    x = px;
+    y = py;
   }
   
-  
+  else if(k == "b")
+  {
+    px = x - step*cos(radians(currentangle));
+    py = y - step*sin(radians(currentangle));
+    
+    x = px;
+    y = py;
+  }
+  else if(k=='C') background(28,107,160);
 }
+
+function keyPressed()
+{
+  if (key == "a"){
+    var c = string.charAt(pos);
+    doit(c);
+    pos = (pos+1) % string.length;
+  }
+ }
 

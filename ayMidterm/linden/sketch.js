@@ -36,7 +36,7 @@ var whereinstring = 0; // where in the L-system are we drawing right now?
 function setup()
 {
   createCanvas(800, 600); // this is the size of the window
-  background(255); // background to white
+  background(28,107,160); // background to sea blue
   stroke(0, 0, 0, 255); // draw in black
   
   // start the x and y position at center
@@ -145,7 +145,7 @@ function keyTyped(){
   var a = random(50, 100);
   fill(r, g, b, a); // interior fill color
   
-  angle -= 30;
+  angle -= 90;
   
 }
 

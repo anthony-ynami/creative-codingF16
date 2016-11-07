@@ -31,7 +31,7 @@ function setup() {
 }
 
 function draw() {
-  // background(0, 0, 255, 10);
+  background(28,107,160);
   img[whichimage].loadPixels(); // load pixels into memory
   img[1-whichimage].loadPixels(); // load pixels into memory
   for (var i = 0; i < howwide; i++) {
@@ -56,15 +56,15 @@ function draw() {
       if(p4==1) // center pixel is alive
       {
         // if two or three live neighbors, keep alive; otherwise die.
-        if(neighbors==1|| neighbors==2) result = 1; else result = 0;
+        if(neighbors==2|| neighbors==3) result = 1; else result = 0;
       }
       else // center pixel is DEAD
       {
         // if exactly three live neighbors, become alive; otherwise stay dead.
-        if(neighbors==1) result = 1; else result = 0;
+        if(neighbors== 1) result = 1; else result = 0;
       }
      // write pixels into destination image, scaled to 0 or 255:
-      img[1-whichimage].set(i, j, color(result*255), color(result*255)); 
+      img[1-whichimage].set(i, j, color(result*random(255), result*random(255),result*random(255),result*random(255)), color(result*random(255), result*random(255),result*random(255),result*random(255))); 
     }
   }
   img[1-whichimage].updatePixels(); // update pixels on destination
@@ -76,7 +76,7 @@ function draw() {
 function mouseClicked()
 {
   fillatmouse();
-  background(random(255),random(255),random(255),40)
+  background(255)
 }
 
 function mouseDragged()
@@ -87,6 +87,7 @@ function mouseDragged()
 function keyReleased() // blow out the image with new stuff
 {
   randomize();
+  background(255)
 }
 
 // this completely recreates the simulation with binary noise (cells are on or off)
@@ -114,6 +115,6 @@ function fillatmouse()
   img[whichimage].loadPixels();
   var thex = floor(mouseX/(width/howwide));
   var they = floor(mouseY/(height/howtall));
-  img[whichimage].set(thex, they, color(random(0,255),random(0,255),random(0,255),20));
+  img[whichimage].set(thex, they, color(random(255),random(255),random(255),random(100)));
   img[whichimage].updatePixels();
 }
