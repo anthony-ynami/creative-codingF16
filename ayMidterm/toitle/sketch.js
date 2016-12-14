@@ -40,7 +40,7 @@ function setup()
   createCanvas(800, 600);
   background(28,107,160);
   strokeWeight(20);
-  stroke(random(255), random(255), random(255), random(255));
+  stroke(255,204,153, 150);
   
   // start our turtle in the middle of the screen
   x = width/2;
@@ -64,17 +64,23 @@ function draw()
   radius+= random(0, 15);
   radius = radius/3;
   
-}
-
-function doit(k)
-{
+  //this is for the automatic path. comment it out to control rillakuma manually
+  // var c = string.charAt(pos);
+  // go(c);
+  // pos = (pos+1) % string.length;
+ 
   // draw the stuff:
   imageMode(CENTER);
   image(turt,x, y, 50, 50); // circle that chases the mouse
+  
+}
+
+function go(k)
+{
 
   console.log(k); // what key did we type?
   
-  if(k=='F') // draw forward
+  if(keyIsPressed('F')== true) // draw forward
   {
     // polar to cartesian transformation based on step and currentangle:
     var x1 = x + step*cos(radians(currentangle));
@@ -87,22 +93,22 @@ function doit(k)
     x = x1;
     y = y1;
   }
-  else if(k=='f') // move forward
+  else if(keyIsPressed('f')== true) // move forward
   {
     x1 = x + step*cos(radians(currentangle));
     y1 = y + step*sin(radians(currentangle));
     x = x1;
     y = y1;
   }
-  else if(k=='=')
+  else if(keyIsPressed('=')== true)
   {
    currentangle+=angle; // turn left
   }
-  else if(k=='-')
+  else if(keyIsPressed('-')== true)
   {
     currentangle-=angle; // turn right   
   }
-  else if(k == "B")
+  else if(keyIsPressed("B")== true)
   {
     var px = x - step*cos(radians(currentangle));
     var py = y - step*sin(radians(currentangle));
@@ -113,7 +119,7 @@ function doit(k)
     y = py;
   }
   
-  else if(k == "b")
+  else if(keyIsPressed("b")== true)
   {
     px = x - step*cos(radians(currentangle));
     py = y - step*sin(radians(currentangle));
@@ -121,15 +127,9 @@ function doit(k)
     x = px;
     y = py;
   }
-  else if(k=='C') background(28,107,160);
-}
-
-function keyPressed()
-{
-  if (key == "a"){
-    var c = string.charAt(pos);
-    doit(c);
-    pos = (pos+1) % string.length;
+  else if(keyIsPressed('C')== true) background(28,107,160);
+  else if(keyIsPressed('a')== true){
+    console.log("hey");
   }
- }
+}
 
